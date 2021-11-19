@@ -17,7 +17,7 @@ private:
     ////
 
     // data handles (owned)
-    // Task 3 : convert to unique pointer
+    // Task 4 : convert to unique pointer
     std::vector<std::unique_ptr<GraphEdge>> _childEdges;  // edges to subsequent nodes
 
     // data handles (not owned)
