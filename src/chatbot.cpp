@@ -58,6 +58,7 @@ ChatBot::ChatBot(const ChatBot &source) {
     // copy members
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
 
 }
 

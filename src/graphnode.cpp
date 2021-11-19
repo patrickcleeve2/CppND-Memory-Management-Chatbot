@@ -1,5 +1,6 @@
 #include "graphedge.h"
 #include "graphnode.h"
+#include <memory>
 
 GraphNode::GraphNode(int id)
 {
@@ -28,9 +29,10 @@ void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
     _parentEdges.push_back(edge);
 }
 
-void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
+void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 {
-    _childEdges.push_back(edge);
+    // Task 3: convert to unique pointer, move ownership
+    _childEdges.push_back(std::move(edge));
 }
 
 //// STUDENT CODE
@@ -54,7 +56,8 @@ GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
     //// STUDENT CODE
     ////
 
-    return _childEdges[index];
+    // Task 3: return raw pointer
+    return _childEdges[index].get(); 
 
     ////
     //// EOF STUDENT CODE
