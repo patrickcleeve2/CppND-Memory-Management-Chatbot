@@ -90,9 +90,13 @@ ChatBot::ChatBot(ChatBot &&source ){
     _rootNode = source._currentNode;
     _currentNode = source._currentNode;
 
-    // delete source
+    // invalidate source
     source._image = NULL;
-    // TODO: do I need to nullptr the rest of the values?
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._currentNode = nullptr;
+    // QUESTION: why do I need to nullptr the rest of the values?
+    // as in https://knowledge.udacity.com/questions/534709
 
 }
 
@@ -112,8 +116,11 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
     _rootNode = source._currentNode;
     _currentNode = source._currentNode;
 
-    // delete source
+    // invalidate source
     source._image = NULL;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._currentNode = nullptr;
 
     return *this;
 }
