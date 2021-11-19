@@ -229,7 +229,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     // ref: https://knowledge.udacity.com/questions/339497
     ChatBot chatBot("../images/chatbot.png");
 
-    // pass chatBot to chatLogic
+    // pass chatBot to chatLogic for display
     chatBot.SetChatLogicHandle(this);
 
     // use move semantics to pass chatBot instance into root node
