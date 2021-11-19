@@ -59,6 +59,8 @@ ChatBot::ChatBot(const ChatBot &source) {
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
+    _chatLogic->SetChatbotHandle(this); // Task 5: was missing
+
 
 }
 
@@ -78,6 +80,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
+    _chatLogic->SetChatbotHandle(this); // Task 5: was missing
 
     return *this;
 }
@@ -90,14 +93,14 @@ ChatBot::ChatBot(ChatBot &&source ){
     _chatLogic = source._chatLogic;
     _rootNode = source._currentNode;
     _currentNode = source._currentNode;
+    _chatLogic->SetChatbotHandle(this); // Task 5: was missing
+
 
     // invalidate source
     source._image = NULL;
     source._chatLogic = nullptr;
     source._rootNode = nullptr;
     source._currentNode = nullptr;
-    // QUESTION: why do I need to nullptr the rest of the values?
-    // as in https://knowledge.udacity.com/questions/534709
 
 }
 
@@ -116,6 +119,8 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
     _chatLogic = source._chatLogic;
     _rootNode = source._currentNode;
     _currentNode = source._currentNode;
+    _chatLogic->SetChatbotHandle(this);
+    // added based on: https://knowledge.udacity.com/questions/339497
 
     // invalidate source
     source._image = NULL;

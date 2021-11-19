@@ -17,11 +17,12 @@ ChatLogic::ChatLogic()
     //// STUDENT CODE
     ////
 
+    // Task 5 : remove
     // create instance of chatbot
-    _chatBot = new ChatBot("../images/chatbot.png");
+    // _chatBot = new ChatBot("../images/chatbot.png");
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
+    // _chatBot->SetChatLogicHandle(this);
 
     ////
     //// EOF STUDENT CODE
@@ -33,8 +34,7 @@ ChatLogic::~ChatLogic()
     ////
 
     // delete chatbot instance
-    delete _chatBot;
-
+    // delete _chatBot; // Task 5
 
     // smart pointer handles deallocation
     // // delete all nodes
@@ -225,9 +225,17 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
         }
     }
 
-    // add chatbot to graph root node
-    _chatBot->SetRootNode(rootNode);
-    rootNode->MoveChatbotHere(_chatBot);
+    // Task 5: create a local instance of ChatBot on the stack
+    // ref: https://knowledge.udacity.com/questions/339497
+    ChatBot chatBot("../images/chatbot.png");
+
+    // pass chatBot to chatLogic
+    chatBot.SetChatLogicHandle(this);
+
+    // use move semantics to pass chatBot instance into root node
+    chatBot.SetRootNode(rootNode);
+    rootNode->MoveChatbotHere(std::move(chatBot));
+    
     
     ////
     //// EOF STUDENT CODE
