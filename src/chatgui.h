@@ -14,17 +14,7 @@ private:
     wxBoxSizer *_dialogSizer;
     wxBitmap _image;
 
-    //// STUDENT CODE
-    ////
-
     std::unique_ptr<ChatLogic> _chatLogic;
-    //ref: 
-    // https://knowledge.udacity.com/questions/303358
-    // https://knowledge.udacity.com/questions/674764
-    // https://knowledge.udacity.com/questions/703408
-
-    ////
-    //// EOF STUDENT CODE
 
 public:
     // constructor / destructor
@@ -32,7 +22,6 @@ public:
     ~ChatBotPanelDialog();
 
     // getter / setter
-    // return the raw pointer 
     ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
 
     // events

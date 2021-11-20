@@ -42,32 +42,27 @@ ChatBot::~ChatBot()
     }
 }
 
-//// STUDENT CODE
-////
- 
-// Task 2
-// ref: https://knowledge.udacity.com/questions/602292
-
-ChatBot::ChatBot(const ChatBot &source) {
+ChatBot::ChatBot(const ChatBot &source)
+{
     std::cout << "ChatBot Copy Constructor" << std::endl;
 
     // deep copy image
     _image = new wxBitmap();
     *_image = *source._image;
-    
+
     // copy members
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
-    _chatLogic->SetChatbotHandle(this); // Task 5: was missing
-
-
+    _chatLogic->SetChatbotHandle(this);
 }
 
-ChatBot &ChatBot::operator=(const ChatBot &source) {
+ChatBot &ChatBot::operator=(const ChatBot &source)
+{
     std::cout << "ChatBot Copy Assignment Operator" << std::endl;
 
-    if (this == &source) {
+    if (this == &source)
+    {
         return *this;
     }
 
@@ -76,16 +71,17 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
     _image = new wxBitmap();
     *_image = *source._image;
 
-    // copy members 
+    // copy members
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
-    _chatLogic->SetChatbotHandle(this); // Task 5: was missing
+    _chatLogic->SetChatbotHandle(this);
 
     return *this;
 }
 
-ChatBot::ChatBot(ChatBot &&source ){
+ChatBot::ChatBot(ChatBot &&source)
+{
     std::cout << "ChatBot Move Constructor" << std::endl;
 
     // move members
@@ -93,21 +89,21 @@ ChatBot::ChatBot(ChatBot &&source ){
     _chatLogic = source._chatLogic;
     _rootNode = source._currentNode;
     _currentNode = source._currentNode;
-    _chatLogic->SetChatbotHandle(this); // Task 5: was missing
-
+    _chatLogic->SetChatbotHandle(this);
 
     // invalidate source
     source._image = NULL;
     source._chatLogic = nullptr;
     source._rootNode = nullptr;
     source._currentNode = nullptr;
-
 }
 
-ChatBot &ChatBot::operator=(ChatBot &&source) {
+ChatBot &ChatBot::operator=(ChatBot &&source)
+{
     std::cout << "ChatBot Move Assignment Operator" << std::endl;
 
-    if (this == &source) {
+    if (this == &source)
+    {
         return *this;
     }
 
@@ -120,7 +116,6 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
     _rootNode = source._currentNode;
     _currentNode = source._currentNode;
     _chatLogic->SetChatbotHandle(this);
-    // added based on: https://knowledge.udacity.com/questions/339497
 
     // invalidate source
     source._image = NULL;
@@ -130,10 +125,6 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
 
     return *this;
 }
-
-
-////
-//// EOF STUDENT CODE
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
